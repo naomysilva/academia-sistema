@@ -1,9 +1,29 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <div id="app">
+    <div class="navbar navbar-dark bg-primary">
+      <a class="navbar-brand">Firebase Auth</a>
+      <ul class="nav">
+        <li class="nav-item px-4">
+          <router-link class="text-white" to="/">Home</router-link>
+        </li>
+        <li class="nav-item px-4">
+          <router-link class="text-white" to="/ListaTreinos">ListaTreinos</router-link>
+        </li>   
+        <li class="nav-item px-4">
+          <router-link class="text-white" to="/createGym">Create your self</router-link>
+        </li>
+        <li class="nav-item px-4">
+          <router-link class="text-white" to="/Member">Member Area</router-link>
+        </li>
+        <li class="nav-item px-4">
+          <router-link class="text-white" to="/Logout">Sair</router-link>
+        </li>   
+      </ul>
+    </div>
+    <div class="container py-4">
+      <router-view />
+    </div>
+  </div>
 </template>
 
 <style>
