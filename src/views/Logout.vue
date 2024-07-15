@@ -1,6 +1,7 @@
 <template>
   <div>
-    <button @click="logout">Sair</button>
+    <p>See you at the next session...</p>
+    <button @click="logout">Logout</button>
   </div>
 </template>
 
@@ -14,7 +15,7 @@ export default {
         .signOut()
         .then(() => {
           console.log("Logout realizado com sucesso.");
-          this.$router.replace('/');
+          this.$router.replace("/");
         })
         .catch((error) => {
           console.error("Erro ao fazer logout:", error);

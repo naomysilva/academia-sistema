@@ -1,22 +1,23 @@
 <template>
   <div>
-    <h2>Meus Treinos Salvos</h2>
+    <h2>My Saved Workouts</h2>
+
     <ul v-if="treinos.length > 0">
       <li v-for="treino in treinos" :key="treino.id">
-        <h3>Treino {{ treino.id }}</h3>
-        <p><strong>Data:</strong> {{ treino.data }}</p>
-        <p><strong>Tipo:</strong> {{ treino.tipo }}</p>
-        <ul>
+        <h3>Workout {{ treino.id }}</h3>
+        <p><strong>Date:</strong> {{ treino.data }}</p>
+        <p><strong>Type:</strong> {{ treino.tipo }}</p>
+        <ul class="exercicio">
           <li v-for="exercicio in treino.exercicios" :key="exercicio.id">
-            <p><strong>Exercício:</strong> {{ exercicio.nome }}</p>
-            <p><strong>Séries:</strong> {{ exercicio.series }}</p>
-            <p><strong>Repetições:</strong> {{ exercicio.repeticoes }}</p>
-            <p v-if="exercicio.peso"><strong>Peso:</strong> {{ exercicio.peso }} kg</p>
+            <p><strong>Exercise:</strong> {{ exercicio.nome }}</p>
+            <p><strong>Sets:</strong> {{ exercicio.series }}</p>
+            <p><strong>Repetitions:</strong> {{ exercicio.repeticoes }}</p>
+            <p v-if="exercicio.peso"><strong>Weight:</strong> {{ exercicio.peso }} kg</p>
           </li>
         </ul>
       </li>
     </ul>
-    <p v-else>Nenhum treino encontrado.</p>
+    <p v-else>No workouts found.</p>
   </div>
 </template>
 
@@ -51,13 +52,21 @@ export default {
 ul {
   list-style-type: none;
   padding: 0;
+  display: flex;
+  justify-content: space-around;
 }
 li {
+  margin-top: 1rem;
   margin-bottom: 20px;
   border: 1px solid #ccc;
   padding: 10px;
 }
 h3 {
   margin-top: 0;
+}
+
+.exercicio {
+  display: flex;
+  flex-direction: column;
 }
 </style>

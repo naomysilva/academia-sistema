@@ -25,7 +25,7 @@
             />
           </div>
           <div class="col-sm-12 form-group">
-            <button v-if="! xhrRequest" class="btn btn-primary btn-lg col-sm-4">Sign up</button>
+            <button v-if="! xhrRequest" class="btn btn-primary btn-lg col-sm-4  m-4">Sign up</button>
             <button v-if="xhrRequest" class="btn btn-primary btn-lg col-sm-4">
                 <span class="spinner-border spinner-border-sm"></span>
                 wait..
@@ -34,7 +34,7 @@
           <div class="col-sm-12 form-group mt-5">
             <p>
               Already have an account?
-              <RouterLink to="/login">Login</RouterLink>
+              <RouterLink to="/">Login</RouterLink>
             </p>
           </div>
         </div>
@@ -60,7 +60,7 @@ export default {
         this.xhrRequest = true
       createUserWithEmailAndPassword(auth, this.email, this.password)
         .then(() => {
-         this.$router.replace('login')
+         this.$router.replace('/')
         })
         .catch((err) => {
             this.xhrRequest = false

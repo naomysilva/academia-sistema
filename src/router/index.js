@@ -1,66 +1,75 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import Login from '../views/Login.vue'
-import Signup from '../views/Signup.vue'
-import Member from '../views/Member.vue'
-import { auth } from "../main";
+import { createRouter, createWebHistory } from "vue-router";
+import Login from "../views/Login.vue";
+import Signup from "../views/Signup.vue";
+import Member from "../views/Member.vue";
+import Agendamentos from "../components/Agendamentos.vue";
 
+import { auth } from "../main";
 
 const routes = [
   {
-    path: '/',
-    name: 'Login',
-    component: Login
+    path: "/",
+    name: "Login",
+    component: Login,
   },
   {
-    path: '/createGym',
-    name: 'createGym',
-    component: () => import(/* webpackChunkName: "about" */ '../views/createGym.vue'),
+    path: "/createGym",
+    name: "createGym",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/createGym.vue"),
     meta: {
-      requiresAuth: true
-    }
+      requiresAuth: true,
+    },
   },
   {
-    path: '/ListaTreinos',
-    name: 'ListaTreinos',
-    component: () => import(/* webpackChunkName: "about" */ '../views/ListaTreinos.vue'),
+    path: "/ListaTreinos",
+    name: "ListaTreinos",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/ListaTreinos.vue"),
     meta: {
-      requiresAuth: true
-    }
+      requiresAuth: true,
+    },
   },
   {
-    path: '/Logout',
-    name: 'Logout',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Logout.vue'),
+    path: "/agendamentos",
+    name: "agendamentos",
+    component: Agendamentos,
+  },
+  {
+    path: "/Logout",
+    name: "Logout",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/Logout.vue"),
     meta: {
-      requiresAuth: true
-    }
+      requiresAuth: true,
+    },
   },
   {
-    path: '/Signup',
-    name: 'Signup',
-    component: Signup
+    path: "/Signup",
+    name: "Signup",
+    component: Signup,
   },
   {
-    path: '/Member',
-    name: 'Member',
+    path: "/Member",
+    name: "Member",
     component: Member,
     meta: {
-      requiresAuth: true
-    }
+      requiresAuth: true,
+    },
   },
-]
+];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
-})
+  routes,
+});
 
 router.beforeEach((to, from, next) => {
   const authenticatedUser = auth.currentUser;
-  const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+  const requiresAuth = to.matched.some((record) => record.meta.requiresAuth);
 
-  if(requiresAuth && ! authenticatedUser) next('/')
-  else next()
-})
+  if (requiresAuth && !authenticatedUser) next("/");
+  else next();
+});
 
-export default router
+export default router;

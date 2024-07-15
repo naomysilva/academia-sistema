@@ -1,37 +1,37 @@
 <template>
   <div>
-    <h2>Adicionar Novo Treino</h2>
+    <h2>Add New Workout</h2>
     <form @submit.prevent="salvarTreino">
-      <label for="data">Data:</label>
+      <label for="data">Date:</label>
       <input type="date" id="data" v-model="data" required>
       
-      <label for="tipo">Tipo de Treino:</label>
+      <label for="tipo">Workout Type:</label>
       <select id="tipo" v-model="tipo" required>
-        <option value="musculação">Musculação</option>
+        <option value="musculação">Weight Training</option>
         <option value="cardio">Cardio</option>
         <!-- Adicione mais tipos de treino conforme necessário -->
       </select>
       
       <div v-for="(exercicio, index) in exercicios" :key="index">
         <h3>Exercício {{ index + 1 }}</h3>
-        <label for="nomeExercicio">Nome do Exercício:</label>
+        <label for="nomeExercicio">Exercise Name:</label>
         <input type="text" id="nomeExercicio" v-model="exercicio.nome" required>
         
-        <label for="series">Séries:</label>
+        <label for="series">Sets:</label>
         <input type="number" id="series" v-model.number="exercicio.series" required>
         
-        <label for="repeticoes">Repetições:</label>
+        <label for="repeticoes">Repetitions:</label>
         <input type="number" id="repeticoes" v-model.number="exercicio.repeticoes" required>
         
-        <label for="peso">Peso (kg):</label>
+        <label for="peso">Weight (kg):</label>
         <input type="number" id="peso" v-model.number="exercicio.peso">
         
-        <button type="button" @click="removerExercicio(index)">Remover Exercício</button>
+        <button type="button" class="btn btn-danger" @click="removerExercicio(index)">Remove Exercise</button>
       </div>
       
-      <button type="button" @click="adicionarExercicio">Adicionar Exercício</button>
+      <button type="button"  class="btn btn-info mt-2" @click="adicionarExercicio">Add Exercise</button>
       
-      <button type="submit">Salvar Treino</button>
+      <button type="submit" class="btn btn-success m-2">Save Workout</button>
     </form>
   </div>
 </template>
